@@ -17,7 +17,7 @@ func main() {
 		return
 	}
 
-	t, err := timeseries.Read(d)
+	t, err := timeseries.ReadCSV(d)
 	if err != nil {
 		fmt.Println("Could not initialize chart ", err.Error())
 		return

@@ -17,3 +17,9 @@ Steps:
 * If a point is returned in the timeseries and an amount to look backward, return the pacf in an array
 For the index i and a given amount, return the partial auto correlation 
 function for that.
+
+## Getting Started
+
+```
+$ go run cmd/auto/auto.go inputs/unique_visitors.csv
+```
