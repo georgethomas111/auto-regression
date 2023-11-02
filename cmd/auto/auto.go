@@ -26,6 +26,6 @@ func main() {
 	c := timeseries.Chart("first chart", t)
 	html, _ := timeseries.NewHTML("Title", "No story yet")
 	html.Charts = append(html.Charts, c)
-	fmt.Println("html is", html)
-
+	html.Render("./latest.html")
+	timeseries.StartServer()
 }

@@ -1,6 +1,7 @@
 package timeseries
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"os"
@@ -43,10 +44,17 @@ func NewHTML(title string, story string) (*HTML, error) {
 }
 
 // Render renders the chart based on the input parameters
-func (h *HTML) Render() {
+func (h *HTML) Render(outName string) {
+	var b []byte
+	buf := bytes.NewBuffer(b)
 	t, err := template.New("webpage").Parse(ChartTmp)
-	err = t.Execute(os.Stdout, h)
+	err = t.Execute(buf, h)
 	if err != nil {
 		fmt.Println(" Error =", err.Error())
+	}
+
+	err = os.WriteFile(outName, buf.Bytes(), 0644)
+	if err != nil {
+		fmt.Println(" Writing file Error =", err.Error())
 	}
 }
