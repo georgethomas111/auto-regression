@@ -11,13 +11,15 @@ type LineChart struct {
 	Title string
 	X     []string
 	Y     []float64
+	Index int
 }
 
-func Chart(title string, t Timeseries) LineChart {
+func Chart(title string, t Timeseries, index int) LineChart {
 	lineChart := LineChart{
 		Title: title,
 		X:     []string{},
 		Y:     []float64{},
+		Index: index,
 	}
 
 	for x, y := range t {

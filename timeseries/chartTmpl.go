@@ -17,22 +17,14 @@ window.addEventListener('load', (event) => {
 
 const loadCharts = function() {
 
-  /*
   let charts = [
-   {
-   {{range .Charts}} title: '{{.Title}}', labels: {{.X}}, points: {{.Y}} {{end}}
-   },
-  ]
-  */
-
-  let charts = [
-   {
      {{range .Charts}} 
-     title: '{{.Title}}', 
-     labels: {{.X}}, 
-     points: {{.Y}} 
+     {
+       title: '{{.Title}}', 
+       labels: {{.X}}, 
+       points: {{.Y}} 
+     },
      {{end}}
-   },
   ]
 
   /*
@@ -151,28 +143,7 @@ const loadBarChart = function() {
 
 </head>
 <body>
-    {{.Title}}
     <section>
-
-      {{range .Charts}} 
-      <article>
-        <h2>Test line chart1</h2>
-
-	<canvas id="lineChart0"></canvas>
-      </article>
-     {{end}}
-
-      <article>
-        <h2>Test line chart2</h2>
-
-	<canvas id="lineChart1"></canvas>
-      </article>
-
-      <article>
-        <h2>Test line chart3</h2>
-
-	<canvas id="lineChart2"></canvas>
-      </article>
       <article>
         <h2>What is the story?</h2>
 
@@ -180,6 +151,13 @@ const loadBarChart = function() {
 
        {{.Story}}
       </article>
+      {{range .Charts}} 
+      <article>
+        <h2>{{.Title}}</h2>
+        <canvas id="lineChart{{.Index}}"></canvas>
+      </article>
+      {{end}}
+
 
     </section>
 </body>

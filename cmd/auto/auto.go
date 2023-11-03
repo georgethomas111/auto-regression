@@ -23,9 +23,13 @@ func main() {
 		return
 	}
 
-	c := timeseries.Chart("first chart", t)
+	chartIndex := 0
+	c0 := timeseries.Chart("first chart", t, chartIndex)
+	chartIndex = 1
+	c1 := timeseries.Chart("second chart", t, chartIndex)
 	html, _ := timeseries.NewHTML("Title", "No story yet")
-	html.Charts = append(html.Charts, c)
+	html.Charts = append(html.Charts, c0)
+	html.Charts = append(html.Charts, c1)
 	html.Render("./latest.html")
 	timeseries.StartServer()
 }
