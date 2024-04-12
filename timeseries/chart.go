@@ -22,10 +22,13 @@ func Chart(title string, t Timeseries, index int) LineChart {
 		Index: index,
 	}
 
-	for x, y := range t {
-		lineChart.X = append(lineChart.X, x)
-		lineChart.Y = append(lineChart.Y, y)
+	xt, y := t.SortedCoordinates()
+
+	for _, x := range xt {
+		timeStr := fmt.Sprintf("%s-%d", x.Month(), x.Day())
+		lineChart.X = append(lineChart.X, timeStr)
 	}
+	lineChart.Y = y
 
 	return lineChart
 }

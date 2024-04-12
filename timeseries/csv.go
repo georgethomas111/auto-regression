@@ -31,7 +31,11 @@ func ReadCSV(d []byte) (Timeseries, error) {
 		if err != nil {
 			return nil, err
 		}
-		t[record[0]] = y
+
+		err = t.Add(record[0], y)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	return t, nil

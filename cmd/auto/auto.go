@@ -8,6 +8,11 @@ import (
 	"github.com/georgethomas111/auto-regression/timeseries"
 )
 
+const story = `
+This uses a simple chart library called chart.js.
+"section" and "article" is used in html to order the
+contents on the page.`
+
 func main() {
 	csvInput := os.Args[1]
 
@@ -27,7 +32,7 @@ func main() {
 	c0 := timeseries.Chart("first chart", t, chartIndex)
 	chartIndex = 1
 	c1 := timeseries.Chart("second chart", t, chartIndex)
-	html, _ := timeseries.NewHTML("Title", "No story yet")
+	html, _ := timeseries.NewHTML("Creating charts", story)
 	html.Charts = append(html.Charts, c0)
 	html.Charts = append(html.Charts, c1)
 	html.Render("./latest.html")
