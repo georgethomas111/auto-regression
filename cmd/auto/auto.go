@@ -35,6 +35,7 @@ func main() {
 	html, _ := timeseries.NewHTML("Creating charts", story)
 	html.Charts = append(html.Charts, c0)
 	html.Charts = append(html.Charts, c1)
-	html.Render("./latest.html")
-	timeseries.StartServer()
+	htmlFileName := "latest.html"
+	html.Render("./" + htmlFileName)
+	timeseries.StartServer(htmlFileName)
 }
